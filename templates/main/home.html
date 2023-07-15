@@ -1,0 +1,126 @@
+{% extends 'index.html' %}
+
+{%block title%}
+Home
+{%endblock title%}
+
+{%block home_active%}
+active
+{%endblock home_active%}
+
+
+{%block body%}
+{%load static%}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="{%static 'js/animate.js'%}"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="{%static 'css/test.css'%}">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" /> -->
+<header id="home">
+        <div class="overlay"></div>
+        
+
+        <div class="tophead" >
+            <div class="container text-center">
+                <div class="row jhk">
+                    <div class="col-md-12 ">
+
+                        <h1 class="title-main"> 
+                            <p class="typewrite" data-period="1000" data-type='[ "Welcome To Mano", "The best Employee management platform out there!" ]'>
+                                <span class="wrap"></span> </p>
+                        
+                        </h1>
+                        <h3 class="subtitle-main wow fadeInUp" data-wow-duration="1.1s">Organise your team of employees effectively. Let us do the brunt work for you.</h3>
+						<div class="top-btn-block wow fadeInUp data-wow-duration="2.5s">
+							<a href="#overview" class="btn-explore ">Overview</a>
+							<a href="{%url 'hr_signup' %}" class="btn btn-outline-success btn-account ">Signup</a>
+						</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+       
+    </header>
+    <main>
+        
+
+	
+
+      
+
+    </main>
+
+  
+    <section class="overview-wrap" id="overview">
+        <div class="container">
+            <div class="contenedor">
+                <h2 class="title-overview wow fadeInUp">Overview</h2>
+                <p class="subtitle-overview wow fadeInUp">This is an employee management app. Firstly, register your company. Then add your employees. Send them their login credentials via a secure mechanism, and get started!
+                    Enjoy the features of multi parameter searching for employees, profile management, leave application management, and much more. Much more coming soon!!
+          <div class="row">
+
+            <div class="col-md-6 wow bounceInUp" data-wow-duration="1.4s">
+              <div class="card">
+                  <figure class="text-center">
+                      <img src="https://www.thestreet.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTY3NTM5MzU5MDg3MjczODcw/business-structure-which-type-is-best-for-your-business.png" class="img-fluid">
+                  </figure>
+                  <div class="card-body">
+                      <h5 class="card-title">Register your company!!</h5>
+                      <p class="card-text">are you looking to manage your employee database effectively while at the same time maintain effective communication with them? Register your company now, and get started.<br><br><br></p>
+                      <a href="#" class="btn btn-success">
+                        Signup
+                        </a>
+                    </div>
+              </div>
+          </div>
+
+
+              <div class="col-md-6 wow bounceInUp" data-wow-duration="1.4s">
+                  <div class="card">
+                      <figure class="text-center">
+                          <img src="https://source.unsplash.com/yfmjALh1S6s/940x650" class="img-fluid">
+                      </figure>
+                      <div class="card-body">
+                          <h5 class="card-title">Support</h5>
+                          <p class="card-text">Wish to support our endeavours? We are always thankful to every support we can get. Help us help you</p>
+                          <a href="{%url 'payment'%}" class="btn btn-success">
+                            Support
+                            </a>
+                        </div>
+                  </div>
+              </div>
+             
+              
+          </div>
+      </div>
+  </section>
+    
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+            <script>
+              new WOW().init();
+              </script>
+    <script>
+      
+        // $(window).on("scroll", function() {
+        //     if ($(this).scrollTop() > 10) {
+        //         $("nav.navbar").addClass("mybg-dark");
+        //         $("nav.navbar").addClass("navbar-shrink");
+
+        //     } else {
+        //         $("nav.navbar").removeClass("mybg-dark");
+        //         $("nav.navbar").removeClass("navbar-shrink");
+
+        //     }
+
+        // });
+
+        
+    </script>
+{%endblock body%}

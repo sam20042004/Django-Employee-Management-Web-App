@@ -1,0 +1,103 @@
+{% load static %}
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 09</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+	{% block head %} {% endblock head %}
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	        </button>
+        </div>
+	  		<div class="img bg-wrap text-center py-4" >
+	  			<div class="user-logo">
+          <div class="img" ></div>
+            <h3>Welcome {{user}}</h3>
+            {% if user.is_employee %}
+              <h3>{{user.employee.parent_hr.company_name}}</h3>
+            {%else%}
+            <h3>{{user.hrprofile.company_name}}</h3>
+            {%endif%}
+	  			</div>
+	  		</div>
+        <ul class="list-unstyled components mb-5">
+          <li>
+              <a href="{% url 'view_list' %}"><span class="fa fa-search mr-3 notif"></span> Search</a>
+          </li>
+          {% if user.is_employee %}
+          <li>
+            <a href="{% url 'takeleave' %}"><span class="fa fa-info-circle mr-3"></span>Leave status</a>
+          </li>
+          {% else %}
+          <li>
+            <a href="{% url 'Showapp' %}"><span class="fa fa-sticky-note mr-3"></span>Leave requests</a>
+          </li>
+          {% endif %}
+
+          <li>
+            <a href="{% url 'edit_profile' %}"><span class="fa fa-edit mr-3"></span> Edit profile </a>
+          </li>
+          {% if user.is_employee %}
+          <li>
+            <a href="{%url 'EmployeeProfile' request.user.employee.id%}"><span class="fa fa-user-o mr-3"></span> View profile</a>
+          </li>
+          
+          {%else%}
+            <li>
+              <a href="{%url 'HrProfile' request.user.hrprofile.id%}"><span class="fa fa-user-o mr-3"></span> View Profile</a>
+            </li>
+          {%endif%}
+          <li>
+            <a href="{%url 'handleLogout'%}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+          </li>
+          {% if user.is_hr %}
+          <li>
+            <a href="{%url 'employee_signup'%}"><span class="fa fa-plus mr-3"></span> Add Employee</a>
+          </li>
+          {%endif%}
+
+
+
+        </ul>
+
+    	</nav>
+
+		<!-- Page Content  -->
+		
+		
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+		{% for message in messages %}
+		<div class="mrt">
+		<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+			{{ message }}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+		</div>
+		</div>
+{%endfor%}
+        {%block body%}  {%endblock body%}
+		</div>
+
+    <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="{%static 'js/popper.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/main.js'%}"></script>
+  </body>
+</html>
