@@ -1,0 +1,77 @@
+{%extends 'main/base_layout.html'%}
+
+{% load static %}
+
+
+
+
+{% block head %} {% endblock head %}
+
+
+{%block body%}
+
+
+<div class="container rounded bg-white mt-5">
+	<div class="row">
+		<div class="col-md-4 border-right">
+			<div class="d-flex flex-column align-items-center text-center p-3 py-5">
+				<img class="rounded-circle mt-5 card-img" src="{{hr.profile_pic.url}}"><span class="font-weight-bold">{{hr.user.username}}</span><span class="text-black-50">{{hr.user.email}}</span><span> </span>
+			</div>
+		</div>
+		<div class="col-md-8 border-right">
+			<div class="p-3 py-5">
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<h4 class="text-right">Profile Settings</h4>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-6">
+						<label class="labels">username</label><input type="text" class="form-control" value="{{hr.user.username}}" readonly=True>
+					</div>
+					<div class="col-md-6">
+						<label class="labels">Company name</label><input  class="form-control" value="{{hr.company_name}}" readonly=True>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-12">
+						<label class="labels">PhoneNumber</label><input type="text" class="form-control" value="{{hr.phone_number}}" readonly=True>
+					</div>
+					
+					<div class="col-md-6">
+						<label class="labels">Name</label><input type="text" class="form-control" value="{{hr.full_name}}" readonly=True>
+					</div>
+					<div class="col-md-6">
+						<label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="{{hr.user.email}}"readonly=True>
+					</div>
+					
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-6">
+						<label class="labels">year of registration</label><input type="text" class="form-control" value="{{hr.year_of_registration}}" readonly=True>
+					</div>
+					
+					<div class="col-md-6">
+						<label class="labels">Address</label><input type="text" class="form-control" value="{{hr.address}}" readonly=True>
+					</div>
+				</div>
+				
+			</div>
+				
+      
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+{%endblock body%}
+	
+{% block name %} {{hr.user.username}}{% endblock name %}
+
+
+full_name
+
+
+
+
+
+

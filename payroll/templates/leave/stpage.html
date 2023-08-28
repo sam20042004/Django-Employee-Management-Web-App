@@ -1,0 +1,20 @@
+{% extends 'main/base_layout.html' %}
+
+{% block body %}
+
+    <div class="row" style="padding-top: 70px;padding-bottom: 50px;">
+        
+      <div class="col-md-6" style="margin-left: 200px;">
+  
+        <a href="{% url 'fill_leave'%}" class="btn btn-student btn-lg" style="background-color:#645F5E;" role="button">Send Leave Application</a>
+          
+      </div>
+  
+      <div class="col-md-6" style="margin-left: -200px;">
+  
+        <a href="{% url 'leave_response'%}" class="btn btn-student btn-lg" style="background-color:#645F5E;" role="button"> View Application Response</a>
+
+      </div>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="container">
+  <h2>Sign up for a free account</h2>
+  <p class="lead">Select below the type of account you want to create</p>
+  <a href="{% url 'employee_signup' %}" class="btn btn-employee btn-lg" role="button">I'm a employee</a>
+  <a href="{% url 'hr_signup' %}" class="btn btn-hr btn-lg" role="button">I'm a hr</a>
+</div>
+
+{% endblock %}

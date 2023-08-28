@@ -1,0 +1,121 @@
+{% extends 'main/base_layout.html' %}
+{% load extras %}
+{% load crispy_forms_tags %}
+{%block title%} consult {%endblock title%}
+
+{%block consult_active%} active {%endblock consult_active%}
+{%block body%}
+
+<style>
+
+  .form-label{
+    color: red;
+  }
+  .searchbar {
+    text-align: center;
+  }
+  body {
+    background: #f8f8f8;
+  }
+  .form-button {
+    /* padding: 10px 20px;
+    font-size: 20px; */
+    border-radius: 10px;
+    width: 90%;
+    font-size: 15px;
+  }
+  .profilebtn {
+    /* padding: 10px 20px;
+    font-size: 20px; */
+    border-radius: 10px;
+   
+    font-size: 15px;
+  }
+ 
+.table-wrap {
+  height: 80px;
+  overflow-y: auto;
+}
+.cont{
+margin-top: 100px;
+}
+
+</style>
+<div class="cont container">
+  <div class="searchbar row">
+      <div class="col-md-3"></div>
+    <form method="get" class="searchform col-md-5">
+        <div class="form-group">
+            
+      {{myFilter1.form | crispy }}
+      <button
+        type="submit"
+        class="btn btn-outline-primary form-button ml-4 my-2"
+      >
+        Search
+      </button>
+    </div>
+    </form>
+  </div>
+  <div class="table-responsive">
+  <table class="table table-bordered bg-light table-wrap my-4">
+    <thead>
+      <tr>
+        <th scope="col">SNo.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">post</th>
+        <th scope="col">More info</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    
+      {%for i in employee_page_obj%}
+      <tr>
+        <th scope="row">{{ forloop.counter }}}</th>
+       
+        <td>{{i.full_name}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.post}}</td>
+        
+        <td>
+          <a href="{%url 'EmployeeProfile' i.id%}" class="btn btn-primary profilebtn"
+            >view profie</a
+          >
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+ </div>
+</div>
+<div class="d-flex justify-content-center container">
+  <nav aria-label="Page navigation example">
+{% if employee_page_obj.has_other_pages %}
+  <ul class="pagination">
+    {% if employee_page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="{% my_url employee_page_obj.previous_page_number 'page' request.GET.urlencode %}">previous</a></li>
+    {% else %}
+      <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+    {% endif %}
+    {% for i in employee_page_obj.paginator.page_range %}
+      {% if employee_page_obj.number == i %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+        <li><a class="page-link" href="{% my_url i 'page' request.GET.urlencode %}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if employee_page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="{% my_url employee_page_obj.next_page_number 'page' request.GET.urlencode %}">Next</a></li>
+    {% else %}
+    <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</nav>
+
+</div>
+  {%endblock body%}
